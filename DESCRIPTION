@@ -1,0 +1,21 @@
+Package: bis557
+Title: Package for BIS557
+Version: 0.0.1
+Authors@R: 
+    person(given = "Bo",
+           family = "Qin",
+           role = c("aut", "cre"),
+           email = "bo.qin@yale.edu",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: This package holds my homework for class computational statistics
+License: LGPL (>= 2.1)
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.1.1
+Suggests: 
+    testthat,
+    palmerpenguins,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
