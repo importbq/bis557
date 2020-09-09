@@ -8,6 +8,6 @@
 #' fit = lm(bill_length_mm ~ ., data = penguins[,-8])
 #' grab_coeffs(fit)
 #' @export
-grab_coeffs = function(lm_obj){
-  lm_obj$coefficient
+grab_resids = function(lm_obj){
+  lm_obj$residuals
 }
