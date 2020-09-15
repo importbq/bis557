@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "bo.qin@yale.edu",
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: This package holds my homework for class computational statistics
+Description: This package holds my homework for class computational statistics.
 License: LGPL (>= 2.1)
 Encoding: UTF-8
 LazyData: true
@@ -20,4 +20,7 @@ Suggests:
     rmarkdown
 VignetteBuilder: knitr
 Depends: 
-    R (>= 2.10)
+    R (>= 2.10),
+    rlang,
+    stats
+    
