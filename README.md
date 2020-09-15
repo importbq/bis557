@@ -7,8 +7,7 @@
 
 ![Travis build
 status](https://travis-ci.com/importbq/bis557.svg?token=XyjFaGxnEDaFXgSHunRQ&branch=master)
-[![Codecov test
-coverage](https://codecov.io/gh/importbq/bis557/branch/master/graph/badge.svg)](https://codecov.io/gh/importbq/bis557?branch=master)
+[![codecov](https://codecov.io/gh/importbq/bis557/branch/master/graph/badge.svg?token=FOUOvUJKIo)](https://codecov.io/gh/importbq/bis557)
 <!-- badges: end -->
 
 The goal of bis557 is to illustrate how to create a R package for the
