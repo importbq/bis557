@@ -16,7 +16,8 @@ knitr::opts_chunk$set(
 # bis557
 
 <!-- badges: start -->
-[![Travis build status](https://travis-ci.com/importbq/bis557.svg?token=XyjFaGxnEDaFXgSHunRQ&branch=master)
+![Travis build status](https://travis-ci.com/importbq/bis557.svg?token=XyjFaGxnEDaFXgSHunRQ&branch=master)
+[![Codecov test coverage](https://codecov.io/gh/importbq/bis557/branch/master/graph/badge.svg)](https://codecov.io/gh/importbq/bis557?branch=master)
 <!-- badges: end -->
 
 
@@ -48,7 +49,7 @@ library(bis557)
 What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
 
 ```{r cars}
-summary(cars)
+summary(lm_patho)
 ```
 
 You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date.

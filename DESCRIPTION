@@ -17,10 +17,10 @@ Suggests:
     testthat,
     palmerpenguins,
     knitr,
-    rmarkdown
+    rmarkdown,
+    covr
 VignetteBuilder: knitr
 Depends: 
     R (>= 2.10),
     rlang,
     stats
-    
