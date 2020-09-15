@@ -18,7 +18,7 @@ test_that("You linear_model() function works with contrasts.", {
 
   data(iris)
 
-  fit_linear_model <- linear_model(Sepal.Length ~ ., iris, 
+  fit_linear_model <- linear_model(Sepal.Length ~ ., iris,
                                    contrasts = list(Species = "contr.sum"))
 
   fit_lm <- lm(Sepal.Length  ~ ., iris, contrasts = list(Species = "contr.sum"))
@@ -39,7 +39,3 @@ test_that("Your linear_model() function works in a tougher case.", {
                     tolerance = 1e-5)
 })
 
-
-library(palmerpenguins)
-library(usethis)
-library(missForest)

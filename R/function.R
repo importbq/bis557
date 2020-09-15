@@ -20,6 +20,6 @@ linear_model = function(formula , data, contrasts = NULL){
     stop('Please enter a data frame')
   }
   mm = lm(formula = formula,data = data, contrasts=contrasts)
-  return(mm$coefficients)
+  return(mm)
 }
 

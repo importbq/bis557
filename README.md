@@ -33,6 +33,8 @@ This is a basic example which shows you how to solve a common problem:
 
 ``` r
 library(bis557)
+#> Loading required package: rlang
+#> Warning: package 'rlang' was built under R version 3.6.2
 ## basic example code
 ```
 
