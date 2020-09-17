@@ -7,7 +7,7 @@
 
 ![Travis build
 status](https://travis-ci.com/importbq/bis557.svg?token=XyjFaGxnEDaFXgSHunRQ&branch=master)
-[![codecov](https://codecov.io/gh/importbq/bis557/branch/master/graph/badge.svg?token=FOUOvUJKIo)](https://codecov.io/gh/importbq/bis557)
+[![codecov](https://codecov.io/gh/importbq/bis557/branch/master/graph/badge.svg)](https://codecov.io/gh/importbq/bis557)
 <!-- badges: end -->
 
 This Package contains my homeworks for Bis 557
@@ -18,7 +18,7 @@ The development version of the packages
 
 ``` r
 install.packages("bis557")
-#> Installing package into '/private/var/folders/ch/jflkjh557xs44kl3fsk78hnc0000gn/T/Rtmp8tC7tp/temp_libpath1c125aab5e4c'
+#> Installing package into '/private/var/folders/ch/jflkjh557xs44kl3fsk78hnc0000gn/T/Rtmpla6n5m/temp_libpath1f2d697040fe'
 #> (as 'lib' is unspecified)
 #> Warning: package 'bis557' is not available (for R version 3.6.1)
 ```
@@ -63,7 +63,7 @@ beta = as.matrix(gradient_descent(X,Y, N=10000))
 #print the loss after 10K iterations:  
 loss = sum((Y - X %*% beta)^2) 
 print(loss)
-#> [1] 1.30877e-27
+#> [1] 9.758979e-24
 ```
 
 We see that gradient descent achieved very good results for OLS.
