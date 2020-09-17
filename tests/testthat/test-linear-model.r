@@ -1,6 +1,6 @@
 library(testthat)
 
-context("Test the output of homework 1.")
+context("Test the output of linear model.")
 
 test_that("You linear_model() function works in an easy case.", {
 
@@ -38,4 +38,5 @@ test_that("Your linear_model() function works in a tougher case.", {
   expect_equivalent(fit_lm$coefficients, fit_linear_model$coefficients,
                     tolerance = 1e-5)
 })
+
 

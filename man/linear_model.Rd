@@ -7,14 +7,14 @@
 linear_model(formula, data, contrasts = NULL)
 }
 \arguments{
-\item{formula}{a formula for a linear model to regress}
+\item{formula}{a formula for a linear model to regress.}
 
-\item{data}{the data frame we run our model on}
+\item{data}{the data frame we run our model on.}
 
-\item{contrasts}{the categorical variables we want to include in our model}
+\item{contrasts}{the categorical variables we want to include in our model.}
 }
 \description{
-This is a simple function to calculate the coefficients of of a linear model
+This is a simple function to calculate the coefficients of of a linear model.
 }
 \examples{
 library(palmerpenguins)
