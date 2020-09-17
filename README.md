@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# bis557
+# Bis557
 
 <!-- badges: start -->
 
@@ -10,8 +10,7 @@ status](https://travis-ci.com/importbq/bis557.svg?token=XyjFaGxnEDaFXgSHunRQ&bra
 [![codecov](https://codecov.io/gh/importbq/bis557/branch/master/graph/badge.svg?token=FOUOvUJKIo)](https://codecov.io/gh/importbq/bis557)
 <!-- badges: end -->
 
-The goal of bis557 is to illustrate how to create a R package for the
-Yale Biostatistics biss557 class
+This Package contains my homeworks for Bis 557
 
 ## Installation
 
@@ -19,6 +18,9 @@ The development version of the packages
 
 ``` r
 install.packages("bis557")
+#> Installing package into '/private/var/folders/ch/jflkjh557xs44kl3fsk78hnc0000gn/T/Rtmp8tC7tp/temp_libpath1c125aab5e4c'
+#> (as 'lib' is unspecified)
+#> Warning: package 'bis557' is not available (for R version 3.6.1)
 ```
 
 And the development version from [GitHub](https://github.com/) with:
@@ -30,35 +32,38 @@ devtools::install_github("importbq/bis557")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+We have two examples here to show the usage of linear\_model and
+gradient descent:
 
 ``` r
 library(bis557)
 #> Loading required package: rlang
 #> Warning: package 'rlang' was built under R version 3.6.2
-## basic example code
+data(iris)
+fit_linear_model <- linear_model(Sepal.Length ~ ., iris)
+print(fit_linear_model)
+#> $coefficients
+#>       (Intercept)       Sepal.Width      Petal.Length       Petal.Width 
+#>         2.1712663         0.4958889         0.8292439        -0.3151552 
+#> Speciesversicolor  Speciesvirginica 
+#>        -0.7235620        -1.0234978 
+#> 
+#> attr(,"class")
+#> [1] "my_lm"
 ```
-
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
 
 ``` r
-summary(lm_patho)
-#>        y                  x1                 x2          
-#>  Min.   :-1.0e+00   Min.   :-1.0e+00   Min.   :-1.00000  
-#>  1st Qu.: 2.5e+08   1st Qu.: 2.5e+08   1st Qu.:-0.75000  
-#>  Median : 5.0e+08   Median : 5.0e+08   Median :-0.50000  
-#>  Mean   : 5.0e+08   Mean   : 5.0e+08   Mean   :-0.50000  
-#>  3rd Qu.: 7.5e+08   3rd Qu.: 7.5e+08   3rd Qu.:-0.24999  
-#>  Max.   : 1.0e+09   Max.   : 1.0e+09   Max.   : 0.00001
+# create the feature vectors X and the label vectors Y:
+X = matrix(runif(9),nrow = 3, ncol = 3)
+Y = as.matrix(c(1,2,3))
+
+#estimate beta from gradient descent:
+beta = as.matrix(gradient_descent(X,Y, N=10000))
+
+#print the loss after 10K iterations:  
+loss = sum((Y - X %*% beta)^2) 
+print(loss)
+#> [1] 1.30877e-27
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date.
-
-You can also embed plots, for example:
-
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub\!
+We see that gradient descent achieved very good results for OLS.
