@@ -17,3 +17,15 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(bis557)
 ```
+
+This package is built based upon Bis 557 Homework. You will find two functions in this package. One is called linear_model and the other one is called gradient_descent. 
+
+Both functions are stored in the function.R file.
+
+Linear_model function takes a formula,a dataset and a list of contrasts as input. It calculates the best estimate for the coefficients and output them in a list.
+
+Gradient_descent function takes a feature vector X, a label vector y, learning rate lambda and the number of iterations you want to perform GD. It calculates the best weighting for feature vector X that minimize squared losses.  
+
+
+
+
