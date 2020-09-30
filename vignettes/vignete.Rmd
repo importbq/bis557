@@ -1,5 +1,5 @@
 ---
-title: "vignete"
+title: "HW1"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{vignete}
@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(bis557)
 ```
+# Homework 1
 
 This package is built based upon Bis 557 Homework. You will find two functions in this package. One is called linear_model and the other one is called gradient_descent. 
 

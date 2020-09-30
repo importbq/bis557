@@ -1,0 +1,123 @@
+---
+title: "HW2"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{HW2}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(bis557)
+```
+First we set up the x, y and $\beta$ as the following:
+\[
+y = 
+\begin{bmatrix}
+y_1 \\
+y_2 \\
+.\\
+.\\
+y_n
+\end{bmatrix}
+ 
+ 
+x=
+\begin{bmatrix}
+1 & x_1 \\
+1 & x_2 \\
+.& . \  \\
+.& . \  \\
+1 & x_n
+\end{bmatrix}
+
+b = 
+\begin{bmatrix}
+\beta_0 \\
+\beta_1  \\
+\end{bmatrix}
+\]
+
+The formula for least square estimator matrix is:
+\[
+\hat\beta = (X^TX)^{-1}X^TY
+\]
+
+We first calculate $(X^TX)^{-1}$. Notice that the denominator of the scaler can be easily simplified from the sum of squares equations.
+
+\[
+\begin{split}
+(X'X)^{-1} &= \frac{1}{n\sum_{i = 1}^{n}x_i^2  - (n\bar x)^2}
+\begin{bmatrix}
+\sum_{i = 1}^{n}x_i^2&-n\bar x\\
+-n\bar x&n\\
+\end{bmatrix}\\
+& = \frac{1}{n(\sum_{i = 1}^{n}x_i -\bar x )^2}
+\begin{bmatrix}
+\sum_{i = 1}^{n}x_i^2&-n\bar x\\
+-n\bar x&n\\
+\end{bmatrix}\\
+\end{split}
+\]
+
+
+
+\[
+\begin{split}
+\hat \beta 
+&= (X^TX)^{-1}X^TY\\
+&= \frac{1}{n(\sum_{i = 1}^{n}x_i -\bar x )^2}
+\begin{bmatrix}
+\sum_{i = 1}^{n}x_i^2&-n\bar x\\
+-n\bar x&n\\
+\end{bmatrix}
+
+\begin{bmatrix}
+\sum_{i = 1}^{n}y_i\\
+\sum_{i = 1}^{n}x_iy_i
+\end{bmatrix}\\
+
+&= \frac{1}{n(\sum_{i = 1}^{n}x_i -\bar x )^2}
+\begin{bmatrix}
+\sum_{i = 1}^{n}x_i^2&-n\bar x\\
+-n\bar x&n\\
+\end{bmatrix}
+
+\begin{bmatrix}
+n\bar y\\
+\sum_{i = 1}^{n}x_iy_i
+\end{bmatrix}\\
+
+&=\frac{1}{(\sum_{i = 1}^{n}x_i -\bar x )^2}
+\begin{bmatrix}
+\bar y\sum_{i=1}^{n}x_i^2 - \bar x \sum_{i =1}^{n}x_iy_i\\
+-n\bar x  \bar y+\sum_{i = 1}^{n}x_iy_i
+\end{bmatrix}\\
+
+&= \frac{1}{(\sum_{i = 1}^{n}x_i -\bar x )^2}
+\begin{bmatrix}
+\bar y\sum_{i=1}^{n}x_i^2 - \bar x^2\bar y + \bar x^2 \bar y - \sum_{i =1}^{n}x_iy_i\\
+\sum_{i = 1}^{n} (x_iy_i - \bar x \bar y)
+\end{bmatrix}\\
+
+&= \frac{1}{(\sum_{i = 1}^{n}x_i -\bar x )^2}
+\begin{bmatrix}
+\bar y(\sum_{i=1}^{n}x_i^2 - \bar x^2) -\bar x(\sum_{i =1}^{n}x_iy_i - \bar x \bar y)\\
+\sum_{i = 1}^{n} (x_i -\bar x )(\bar y_i - \bar y)
+\end{bmatrix}\\
+
+&= \begin{bmatrix}
+\bar y - \hat \beta_1\bar x\\
+\frac{\sum_{i = 1}^{n} (x_i -\bar x )(\bar y_i - \bar y)}{(\sum_{i = 1}^{n}x_i -\bar x )^2}
+\end{bmatrix}\\
+\end{split}
+\]
+
+As we see from the above calculation, the coefficients are: $\beta_1 = \frac{\sum_{i = 1}^{n} (x_i -\bar x )(\bar y_i - \bar y)}{(\sum_{i = 1}^{n}x_i -\bar x )^2}$ and $\beta_0$ = $\bar y - \hat \beta_1\bar x$ 
