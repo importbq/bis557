@@ -8,3 +8,6 @@
 ^pkgdown$
 ^data-raw$
 ^codecov\.yml$
+^doc$
+^Meta$
+^vignettes/\.RData$

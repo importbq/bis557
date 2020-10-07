@@ -16,9 +16,16 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(bis557)
+library(rsample)
+library(dplyr)
+library(foreach)
 ```
+# Part 1: 
+
+## CASL 2.11 Problem 5.
+
 First we set up the x, y and $\beta$ as the following:
-\[
+\begin{align*}
 y = 
 \begin{bmatrix}
 y_1 \\
@@ -43,7 +50,7 @@ b =
 \beta_0 \\
 \beta_1  \\
 \end{bmatrix}
-\]
+\end{align*}
 
 The formula for least square estimator matrix is:
 \[
@@ -52,8 +59,8 @@ The formula for least square estimator matrix is:
 
 We first calculate $(X^TX)^{-1}$. Notice that the denominator of the scaler can be easily simplified from the sum of squares equations.
 
-\[
-\begin{split}
+
+\begin{align*}
 (X'X)^{-1} &= \frac{1}{n\sum_{i = 1}^{n}x_i^2  - (n\bar x)^2}
 \begin{bmatrix}
 \sum_{i = 1}^{n}x_i^2&-n\bar x\\
@@ -64,13 +71,13 @@ We first calculate $(X^TX)^{-1}$. Notice that the denominator of the scaler can 
 \sum_{i = 1}^{n}x_i^2&-n\bar x\\
 -n\bar x&n\\
 \end{bmatrix}\\
-\end{split}
-\]
+\end{align*}
 
 
 
-\[
-\begin{split}
+
+
+\begin{align*}
 \hat \beta 
 &= (X^TX)^{-1}X^TY\\
 &= \frac{1}{n(\sum_{i = 1}^{n}x_i -\bar x )^2}
@@ -117,7 +124,120 @@ n\bar y\\
 \bar y - \hat \beta_1\bar x\\
 \frac{\sum_{i = 1}^{n} (x_i -\bar x )(\bar y_i - \bar y)}{(\sum_{i = 1}^{n}x_i -\bar x )^2}
 \end{bmatrix}\\
-\end{split}
-\]
+\end{align*}
 
-As we see from the above calculation, the coefficients are: $\beta_1 = \frac{\sum_{i = 1}^{n} (x_i -\bar x )(\bar y_i - \bar y)}{(\sum_{i = 1}^{n}x_i -\bar x )^2}$ and $\beta_0$ = $\bar y - \hat \beta_1\bar x$ 
+
+As we see from the above calculation, the coefficients are: $\beta_0$ = $\bar y - \hat \beta_1\bar x$ and $\beta_1 = \frac{\sum_{i = 1}^{n} (x_i -\bar x )(\bar y_i - \bar y)}{(\sum_{i = 1}^{n}x_i -\bar x )^2}$ 
+
+# Part 2: Fitting the best gradient descent solutions
+
+```{r}
+#compare OLS and best gradient descent solutions:
+#create the dataset:
+set.seed(100)
+ogd = data.frame(red = runif(100,0,1), yellow = runif(100,0,1),blue=runif(100,0,1))
+ogd$price = 0.2*ogd$red + (0.4*(ogd$yellow **2)) + 0.5 * ogd$blue
+formula = price ~ .
+data = ogd
+#helper function:
+error = function(x,x_pred){
+    return(mean((x - x_pred)^2))
+}
+folds = vfold_cv(data, v=10)
+# error for OLS
+err = numeric(0)
+for (i in 1:10){
+  X = as.matrix(training(folds$splits[[i]]))
+  Y = as.matrix(X[,4])
+  X = cbind(1,X[,1:3])
+  beta = solve(t(X) %*% X) %*% t(X) %*% Y
+  X_hat = as.matrix(testing(folds$splits[[i]]))
+  Y_hat = as.matrix(X_hat[,4])
+  X_hat = cbind(1,X_hat[,1:3])
+  pred = X_hat %*% beta
+  err[i] = error(Y_hat,pred)
+}
+# error for optimized gradient descent:
+err_out = out_gradient_descent(formula,data)
+err_o = rep(err_out[1],10)
+```
+
+```{r fig2, fig.height = 4.5, fig.width = 6, fig.align = "center"}
+# Compare the error rate
+x = seq(0.1,1,by = 0.1)
+plot(x,err,type = 'l',col='blue',ylim = c(0.0004,0.0016))
+lines(x,err_o,col='red')
+legend(0.7, 0.0008, legend=c("OLS", "Optim Gradient"),
+       col=c("blue", "red"), lty=1:2, cex=0.8)
+```
+
+We see from the graph that our algorithm for optimizing the gradient descent out of sample accuracy performs better than OLS accross different folds.
+
+
+# Part 3: Implement ridge regression and test colinearity
+
+```{r}
+df = mtcars
+# add a replicate of the feature vector to the original matrix to make it colinear.
+df$cyl2 = mtcars$cyl
+# compare with lm function:
+print(lm(mpg ~.,data = mtcars))
+#Check the output of colinear matrix
+print(ridge_regression(mpg ~.,data = df))
+```
+
+We see that out function does give an estimate for colinear variable cyl2
+
+# part 4: Implement your method for finding the best lambda
+
+```{r}
+set.seed(100)
+df = mtcars
+formula = mpg~.
+print(find_lambda(formula,df, N=10))
+# check by randomly choose a fold in 10 fold:
+folds = vfold_cv(df, v=10)
+# mse helper function:
+error = function(x,x_pred){
+    return(mean((x - x_pred)^2))
+}
+# choose the first fold can calculate mse for all values of lambda:
+mse = foreach(i = seq(0.1,0.9,by=0.1), .combine = c) %do% {
+      #calculate mse
+      error(
+        testing(folds$splits[[1]])[[as.character(formula[2])]],
+        predict(ridge_regression(formula, training(folds$splits[[1]]),
+                                 lambda = i),
+                testing(folds$splits[[1]]))
+      )}
+```
+
+``````{r fig3, fig.height = 4.5, fig.width = 6, fig.align = "center"}
+plot(seq(0.1,0.9,by=0.1),mse,xlab = 'lambda')
+```
+
+As we see from the graph, we indeed find the lambda that achieves the lowest MSE.
+
+
+# part 5: LASSO penalty
+
+Consider the LASSO penalty:
+$$\frac{1}{2n} ||Y - X \beta||^2_2 + \lambda ||\beta||_1$$
+Show that if $|X_j^TY| \le n \lambda$, then $\hat{\beta}^{LASSO}$ must be zero.
+
+We first want to derive the closed formula for LASSO solution:
+
+$$
+\frac{\partial f}{\partial \beta} = -\frac{1}{n}X^T(Y - X\beta) + \lambda \frac{|\beta|}{\beta}
+$$
+set it equal to zero and rearrange the terms we can get:
+
+$$
+\begin{align*}
+\frac{1}{n}X^T(Y - X\hat \beta) + \lambda  \frac{|\hat{\beta}|}{\hat{\beta}} &= 0\\
+\frac{1}{n}X^T(Y - X\hat\beta) & =\lambda  \frac{|\hat{\beta}|}{\hat{\beta}}\\
+\frac{1}{n}X^TY - \frac{1}{n}X^TX\hat\beta & = \lambda  \frac{|\hat{\beta}|}{\hat{\beta}}
+\end{align*}
+$$
+It is obvious that the term $X^TX$ is always larger or equal to 0. We have the constraint $|X^TY| \leq n\lambda$. If $\hat{\beta} > 0$, left handside is strictly less than $\lambda$ since we have a term not larger than $\lambda$ and subtract a positive number from it. If this is the case, the equation does not hold. If $\hat{\beta} < 0$, left handside is strictly larger than $-\lambda$ since $\frac{1}{n}X^TY$ is at least $-lambda$ and we add a positive term onto it. Therefore, the only possible solution is that $\hat{\beta}= 0$
+

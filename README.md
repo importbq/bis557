@@ -18,9 +18,6 @@ The development version of the packages
 
 ``` r
 install.packages("bis557")
-#> Installing package into '/private/var/folders/ch/jflkjh557xs44kl3fsk78hnc0000gn/T/Rtmpla6n5m/temp_libpath1f2d697040fe'
-#> (as 'lib' is unspecified)
-#> Warning: package 'bis557' is not available (for R version 3.6.1)
 ```
 
 And the development version from [GitHub](https://github.com/) with:
@@ -32,8 +29,7 @@ devtools::install_github("importbq/bis557")
 
 ## Example
 
-We have two examples here to show the usage of linear\_model and
-gradient descent:
+We have an example here to show the usage of linear\_model:
 
 ``` r
 library(bis557)
@@ -52,18 +48,8 @@ print(fit_linear_model)
 #> [1] "my_lm"
 ```
 
-``` r
-# create the feature vectors X and the label vectors Y:
-X = matrix(runif(9),nrow = 3, ncol = 3)
-Y = as.matrix(c(1,2,3))
-
-#estimate beta from gradient descent:
-beta = as.matrix(gradient_descent(X,Y, N=10000))
-
-#print the loss after 10K iterations:  
-loss = sum((Y - X %*% beta)^2) 
-print(loss)
-#> [1] 9.758979e-24
-```
-
 We see that gradient descent achieved very good results for OLS.
+
+# Please read Vignette for details
+
+# HW2 Vignette has the solution to HW2

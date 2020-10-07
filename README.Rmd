@@ -27,7 +27,7 @@ This Package contains my homeworks for Bis 557
 
 The development version of the packages
 
-``` {r}
+``` r
 install.packages("bis557")
 ```
 
@@ -39,7 +39,7 @@ devtools::install_github("importbq/bis557")
 ```
 ## Example
 
-We have two examples here to show the usage of linear_model and gradient descent:
+We have an example here to show the usage of linear_model:
 
 ```{r example}
 library(bis557)
@@ -47,19 +47,8 @@ data(iris)
 fit_linear_model <- linear_model(Sepal.Length ~ ., iris)
 print(fit_linear_model)
 ```
-
-
-```{r}
-# create the feature vectors X and the label vectors Y:
-X = matrix(runif(9),nrow = 3, ncol = 3)
-Y = as.matrix(c(1,2,3))
-
-#estimate beta from gradient descent:
-beta = as.matrix(gradient_descent(X,Y, N=10000))
-
-#print the loss after 10K iterations:  
-loss = sum((Y - X %*% beta)^2) 
-print(loss)
-```
 We see that gradient descent achieved very good results for OLS.
 
+# Please read Vignette for details
+
+# HW2 Vignette has the solution to HW2

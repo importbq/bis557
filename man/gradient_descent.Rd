@@ -4,25 +4,26 @@
 \alias{gradient_descent}
 \title{gradient descent}
 \usage{
-gradient_descent(X, Y, lambda = 0.01, N = 5000, print = FALSE)
+gradient_descent(formula, data, lr = 1e-04, max_Iter = 5e+05,
+  threshold = 1e-12, print = FALSE)
 }
 \arguments{
-\item{X}{the feature vector}
+\item{formula}{A formula of form "A ~ B".}
 
-\item{Y}{the label vector}
+\item{data}{A dataframe.}
 
-\item{lambda}{learning rate}
+\item{lr}{learning rate by which to adjust beta along gradient;}
 
-\item{N}{number of iterations}
+\item{max_Iter}{Maximum number of iterations;}
 
-\item{print}{Used to hide or show the progress}
+\item{threshold}{Size of difference between previous and new betas at which the loop exits; default is 0.001.}
+
+\item{print}{Printing progress}
 }
 \description{
 implementation of gradient descent for ordinary least squares, finding the solutions
 for Y = X*beta.
 }
 \examples{
-X = matrix(runif(9),nrow = 3, ncol = 3)
-Y = as.matrix(c(1,2,3))
-beta = gradient_descent(X,Y)
+betas = gradient_descent(mpg ~ cyl + disp, mtcars)
 }
