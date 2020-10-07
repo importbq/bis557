@@ -7,6 +7,7 @@
 
 ![Travis build
 status](https://travis-ci.com/importbq/bis557.svg?token=XyjFaGxnEDaFXgSHunRQ&branch=master)
+
 [![codecov](https://codecov.io/gh/importbq/bis557/branch/master/graph/badge.svg)](https://codecov.io/gh/importbq/bis557)
 <!-- badges: end -->
 
@@ -35,6 +36,19 @@ We have an example here to show the usage of linear\_model:
 library(bis557)
 #> Loading required package: rlang
 #> Warning: package 'rlang' was built under R version 3.6.2
+#> Loading required package: dplyr
+#> Warning: package 'dplyr' was built under R version 3.6.2
+#> 
+#> Attaching package: 'dplyr'
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
+#> Loading required package: foreach
+#> Loading required package: rsample
+#> Warning: package 'rsample' was built under R version 3.6.2
 data(iris)
 fit_linear_model <- linear_model(Sepal.Length ~ ., iris)
 print(fit_linear_model)
