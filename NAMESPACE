@@ -2,8 +2,10 @@
 
 S3method(predict,ridge_regression)
 export(find_lambda)
+export(glmfo)
 export(gradient_descent)
 export(linear_model)
+export(multiclass)
 export(out_gradient_descent)
 export(ridge_regression)
 import(dplyr)

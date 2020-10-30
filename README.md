@@ -67,3 +67,5 @@ We see that gradient descent achieved very good results for OLS.
 # Please read Vignette for details
 
 # HW2 Vignette has the solution to HW2
+
+# HW3 Pdf has been included in the Vignette folder

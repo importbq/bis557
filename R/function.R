@@ -11,7 +11,6 @@
 #' coeffs = linear_model(bill_length_mm ~ ., data = penguins[,-8])
 #' @export
 
-
 linear_model = function(formula, data, contrasts = NULL){
 
   # remove the nas:
