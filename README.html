@@ -612,43 +612,44 @@ body {
 <p>This Package contains my homeworks for Bis 557</p>
 <h2 id="installation">Installation</h2>
 <p>The development version of the packages</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;bis557&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;bis557&quot;</span>)</span></code></pre></div>
 <p>And the development version from <a href="https://github.com/">GitHub</a> with:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># install.packages(&quot;devtools&quot;)</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;importbq/bis557&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;devtools&quot;)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;importbq/bis557&quot;</span>)</span></code></pre></div>
 <h2 id="example">Example</h2>
 <p>We have an example here to show the usage of linear_model:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">library</span>(bis557)</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="co">#&gt; Loading required package: rlang</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="co">#&gt; Warning: package &#39;rlang&#39; was built under R version 3.6.2</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="co">#&gt; Loading required package: dplyr</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="co">#&gt; Warning: package &#39;dplyr&#39; was built under R version 3.6.2</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="co">#&gt; </span></span>
-<span id="cb3-7"><a href="#cb3-7"></a><span class="co">#&gt; Attaching package: &#39;dplyr&#39;</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a><span class="co">#&gt; The following objects are masked from &#39;package:stats&#39;:</span></span>
-<span id="cb3-9"><a href="#cb3-9"></a><span class="co">#&gt; </span></span>
-<span id="cb3-10"><a href="#cb3-10"></a><span class="co">#&gt;     filter, lag</span></span>
-<span id="cb3-11"><a href="#cb3-11"></a><span class="co">#&gt; The following objects are masked from &#39;package:base&#39;:</span></span>
-<span id="cb3-12"><a href="#cb3-12"></a><span class="co">#&gt; </span></span>
-<span id="cb3-13"><a href="#cb3-13"></a><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
-<span id="cb3-14"><a href="#cb3-14"></a><span class="co">#&gt; Loading required package: foreach</span></span>
-<span id="cb3-15"><a href="#cb3-15"></a><span class="co">#&gt; Loading required package: rsample</span></span>
-<span id="cb3-16"><a href="#cb3-16"></a><span class="co">#&gt; Warning: package &#39;rsample&#39; was built under R version 3.6.2</span></span>
-<span id="cb3-17"><a href="#cb3-17"></a><span class="kw">data</span>(iris)</span>
-<span id="cb3-18"><a href="#cb3-18"></a>fit_linear_model &lt;-<span class="st"> </span><span class="kw">linear_model</span>(Sepal.Length <span class="op">~</span><span class="st"> </span>., iris)</span>
-<span id="cb3-19"><a href="#cb3-19"></a><span class="kw">print</span>(fit_linear_model)</span>
-<span id="cb3-20"><a href="#cb3-20"></a><span class="co">#&gt; $coefficients</span></span>
-<span id="cb3-21"><a href="#cb3-21"></a><span class="co">#&gt;       (Intercept)       Sepal.Width      Petal.Length       Petal.Width </span></span>
-<span id="cb3-22"><a href="#cb3-22"></a><span class="co">#&gt;         2.1712663         0.4958889         0.8292439        -0.3151552 </span></span>
-<span id="cb3-23"><a href="#cb3-23"></a><span class="co">#&gt; Speciesversicolor  Speciesvirginica </span></span>
-<span id="cb3-24"><a href="#cb3-24"></a><span class="co">#&gt;        -0.7235620        -1.0234978 </span></span>
-<span id="cb3-25"><a href="#cb3-25"></a><span class="co">#&gt; </span></span>
-<span id="cb3-26"><a href="#cb3-26"></a><span class="co">#&gt; attr(,&quot;class&quot;)</span></span>
-<span id="cb3-27"><a href="#cb3-27"></a><span class="co">#&gt; [1] &quot;my_lm&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bis557)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Loading required package: rlang</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: package &#39;rlang&#39; was built under R version 3.6.2</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Loading required package: dplyr</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: package &#39;dplyr&#39; was built under R version 3.6.2</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Attaching package: &#39;dplyr&#39;</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The following objects are masked from &#39;package:stats&#39;:</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     filter, lag</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The following objects are masked from &#39;package:base&#39;:</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Loading required package: foreach</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Loading required package: rsample</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: package &#39;rsample&#39; was built under R version 3.6.2</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>fit_linear_model <span class="ot">&lt;-</span> <span class="fu">linear_model</span>(Sepal.Length <span class="sc">~</span> ., iris)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(fit_linear_model)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $coefficients</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       (Intercept)       Sepal.Width      Petal.Length       Petal.Width </span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         2.1712663         0.4958889         0.8292439        -0.3151552 </span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Speciesversicolor  Speciesvirginica </span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        -0.7235620        -1.0234978 </span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; attr(,&quot;class&quot;)</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;my_lm&quot;</span></span></code></pre></div>
 <p>We see that gradient descent achieved very good results for OLS.</p>
 <h1 id="please-read-vignette-for-details">Please read Vignette for details</h1>
 <h1 id="hw2-vignette-has-the-solution-to-hw2">HW2 Vignette has the solution to HW2</h1>
 <h1 id="hw3-pdf-has-been-included-in-the-vignette-folder">HW3 Pdf has been included in the Vignette folder</h1>
+<h1 id="hw4-pdf-has-been-included-in-the-vignette-folder-benchmarktest-code-is-produced-in-chunck">HW4 Pdf has been included in the Vignette folder. Benchmark(test code) is produced in chunck.</h1>
 
 </body>
 </html>
