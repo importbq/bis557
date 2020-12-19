@@ -71,3 +71,5 @@ We see that gradient descent achieved very good results for OLS.
 # HW3 Pdf has been included in the Vignette folder
 
 # HW4 Pdf has been included in the Vignette folder. Benchmark(test code) is produced in chunck.
+
+# Final Project was updated.
